@@ -4,7 +4,10 @@
 <nav class='greedy-nav'>
 <button (click)="toggle()"><div class="hamburger"></div></button>
   <ul class='visible-links'>
-    <li><a target="_blank" href='https://github.com/lukejacksonn/GreedyNav'>Greedy</a></li>
+    <li *ngFor="let item of items">
+      <a href='#'>{{item.title}}</a>
+    </li>
+    <!--<li><a target="_blank" href='https://github.com/lukejacksonn/GreedyNav'>Greedy</a></li>
     <li><a href='#'>navigation</a></li>
     <li><a href='#'>that</a></li>
     <li><a href='#'>handles</a></li>
@@ -12,6 +15,9 @@
     <li><a href='#'>menu</a></li>
     <li><a href='#'>elements</a></li>
     <li><a href='#'>effortlessly</a></li>
+    <li><a target="_blank" href='https://github.com/lukejacksonn/GreedyNav'>Greedy</a></li>
+    <li><a href='#'>navigation</a></li>
+    <li><a href='#'>that</a></li>-->
   </ul>
   <ul class='hidden-links hidden'></ul>
 </nav>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -9,6 +9,45 @@ import * as $ from 'jquery';
 export class AppComponent {
 
   title = 'Priority Navigation';
+
+  items: any[] = [
+    {
+      title: 'Greedy'
+    },
+    {
+      title: 'navigation'
+    },
+    {
+      title: 'that'
+    },
+    {
+      title: 'handles'
+    },
+    {
+      title: 'overflowing'
+    },
+    {
+      title: 'menu'
+    },
+    {
+      title: 'elements'
+    },
+    {
+      title: 'effortlessly'
+    },
+    {
+      title: 'Greedy'
+    },
+    {
+      title: 'navigation'
+    },
+    {
+      title: 'that'
+    },
+    {
+      title: 'handles'
+    }
+  ];
 
   $nav: any;
   $btn: any;
@@ -21,7 +60,7 @@ export class AppComponent {
     this.$hlinks.toggleClass('hidden');
   }
 
-  ngAfterContentInit() {
+  ngAfterViewInit() {
     this.$nav = $('.greedy-nav');
     this.$btn = $('.greedy-nav button');
     this.$vlinks = $('.greedy-nav .visible-links');
@@ -29,6 +68,7 @@ export class AppComponent {
 
     this.updateNav();
 
+    
     $(window).resize(()=> {
         this.updateNav();
     });
@@ -36,10 +76,14 @@ export class AppComponent {
 
   
   updateNav() {
+    debugger;
+
     var availableSpace = this.$btn.hasClass('hidden') ? this.$nav.width() : this.$nav.width() - this.$btn.width() - 30;
+    
+    var visibleListOverflowing = this.$vlinks.width() > availableSpace;
 
     // The visible list is overflowing the nav
-    if(this.$vlinks.width() > availableSpace) {
+    if(visibleListOverflowing) {
 
       // Record the width of the list
       this.breaks.push(this.$vlinks.width());
@@ -77,6 +121,5 @@ export class AppComponent {
     if(this.$vlinks.width() > availableSpace) {
       this.updateNav();
     }
-
   }
 }
